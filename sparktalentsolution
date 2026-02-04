@@ -188,3 +188,300 @@
   <script src="assets/script.js" defer></script>
 </body>
 </html>
+:root{
+  --brand-1: #1e3c72;
+  --brand-2: #2a5298;
+  --accent: #ffd700;
+  --bg: #ffffff;
+  --muted: #6b7280;
+  --container-width: 1200px;
+  --header-height: 72px;
+  --radius: 12px;
+  --max-width: 1100px;
+  --gap: 1.25rem;
+  --transition: 0.22s ease;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,"Helvetica Neue",sans-serif;
+  line-height:1.5;
+  color:#111827;
+  background:var(--bg);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  padding-top: var(--header-height); /* space for fixed header */
+}
+
+/* Container */
+.container{
+  max-width:var(--container-width);
+  margin:0 auto;
+  padding:0 1rem;
+}
+
+/* Skip link */
+.skip-link{
+  position:fixed;
+  left:1rem;
+  top:calc(var(--header-height) + 0.5rem);
+  background:#000;
+  color:#fff;
+  padding:0.5rem 0.75rem;
+  z-index:9999;
+  border-radius:6px;
+  transform:translateY(-120%);
+  transition:transform .18s ease;
+}
+.skip-link:focus{transform:none;}
+
+/* Header */
+.site-header{
+  height:var(--header-height);
+  width:100%;
+  position:fixed;
+  top:0;
+  left:0;
+  background:linear-gradient(135deg,var(--brand-1),var(--brand-2));
+  color:#fff;
+  z-index:1000;
+  box-shadow:0 2px 8px rgba(16,24,40,0.08);
+}
+.header-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  height:100%;
+}
+.logo{
+  color:white;
+  text-decoration:none;
+  font-weight:700;
+  font-size:1.1rem;
+}
+.primary-nav ul{
+  list-style:none;
+  display:flex;
+  gap:1rem;
+  margin:0;
+  padding:0;
+}
+.primary-nav a{
+  color:white;
+  text-decoration:none;
+  padding:0.5rem 0.75rem;
+  border-radius:8px;
+  font-weight:600;
+}
+.primary-nav a:hover,
+.primary-nav a:focus{ background: rgba(255,255,255,0.08); outline:none }
+
+/* mobile nav toggle */
+.nav-toggle{
+  display:none;
+  background:transparent;
+  border:0;
+  color:white;
+  cursor:pointer;
+  padding:0.5rem;
+}
+.hamburger{
+  display:block;
+  width:22px;
+  height:2px;
+  background:#fff;
+  position:relative;
+}
+.hamburger::before,
+.hamburger::after{
+  content:'';
+  position:absolute;
+  left:0;
+  width:22px;
+  height:2px;
+  background:#fff;
+}
+.hamburger::before{ top:-6px }
+.hamburger::after{ top:6px }
+
+/* Hero */
+.hero{
+  min-height:60vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:#fff;
+  background: linear-gradient(180deg, rgba(30,60,114,0.95), rgba(42,82,152,0.85));
+  padding: 2.5rem 1rem;
+}
+.hero-inner{ max-width:var(--max-width); }
+.hero h1{ font-size:clamp(1.75rem,3.5vw,3rem); margin-bottom:0.5rem; color:white; }
+.lead{ font-size:1.05rem; opacity:0.95; margin-bottom:1rem; }
+
+/* Sections */
+.section{ padding:3.5rem 0; }
+.alt-bg{ background: linear-gradient(180deg,#f8f9fa,#eef2f6); }
+
+/* Grid utilities */
+.grid{
+  display:grid;
+  gap:var(--gap);
+}
+.services-grid{ grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); }
+.stats-grid{ grid-template-columns: repeat(auto-fit, minmax(150px,1fr)); }
+
+/* Cards */
+.card, .job-listing{
+  background:white;
+  padding:1.25rem;
+  border-radius:var(--radius);
+  box-shadow:0 8px 20px rgba(15,23,42,0.06);
+}
+.card h3{ margin-top:0.5rem; color:var(--brand-1) }
+.service-icon{ font-size:2rem }
+
+/* Jobs */
+.job-listing{ margin-bottom:1rem; }
+.job-listing .meta{ color:var(--muted); margin-bottom:0.5rem; }
+
+/* Stats */
+.stat{ background:white; padding:1.25rem; border-radius:12px; text-align:center; }
+.stat strong{ display:block; font-size:1.5rem; color:var(--brand-1) }
+
+/* Buttons */
+.btn{
+  display:inline-block;
+  background:var(--accent);
+  color:var(--brand-1);
+  padding:0.75rem 1.25rem;
+  border-radius:999px;
+  text-decoration:none;
+  font-weight:700;
+  border:2px solid transparent;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.btn:hover, .btn:focus{ transform:translateY(-3px); box-shadow:0 8px 24px rgba(255,215,0,0.15); outline:none; }
+
+/* small variant */
+.btn.small{ font-size:0.9rem; padding:0.5rem 0.85rem }
+
+/* Form */
+.contact-form{ max-width:600px; margin:0 auto; }
+.form-row{ margin-bottom:0.75rem; }
+label{ display:block; font-weight:600; margin-bottom:0.35rem; color:#111827; }
+input[type="text"], input[type="email"], textarea{
+  width:100%; padding:0.9rem; border:1px solid #e6e9ee; border-radius:8px; font-size:1rem;
+}
+input:focus, textarea:focus{ outline:2px solid rgba(46,120,213,0.12); border-color:var(--brand-1) }
+.form-actions{ display:flex; gap:1rem; align-items:center; margin-top:0.5rem; }
+.form-note{ color:var(--muted); margin-bottom:0.75rem; }
+.honeypot{ position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden; }
+
+/* Footer */
+.site-footer{ background:var(--brand-1); color:white; padding:1.25rem 0; margin-top:1rem; }
+.site-footer a{ color:inherit; text-decoration:underline }
+
+/* Responsive */
+@media (max-width:900px){
+  .primary-nav{ position:fixed; inset:var(--header-height) 0 0 0; background:linear-gradient(180deg,var(--brand-1),var(--brand-2)); transform:translateY(-120%); transition:transform .22s ease; padding-top:1rem; z-index:999; }
+  .primary-nav.open{ transform:translateY(0) }
+  .primary-nav ul{ flex-direction:column; align-items:center; gap:0.5rem; padding-bottom:1.25rem; }
+  .nav-toggle{ display:block }
+  .header-inner{ gap:0.5rem }
+}
+@media (min-width:901px){
+  .primary-nav{ position:static; transform:none; background:transparent; }
+}
+
+// Basic interactivity: menu toggle, smooth scroll with offset, and basic form handling
+document.addEventListener('DOMContentLoaded', function () {
+  var navToggle = document.getElementById('nav-toggle');
+  var primaryNav = document.getElementById('primary-nav');
+  var headerHeight = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 72;
+  navToggle && navToggle.addEventListener('click', function () {
+    var expanded = this.getAttribute('aria-expanded') === 'true';
+    this.setAttribute('aria-expanded', String(!expanded));
+    primaryNav.classList.toggle('open');
+  });
+
+  // Close mobile nav on link click
+  primaryNav && primaryNav.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A' && primaryNav.classList.contains('open')) {
+      primaryNav.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // Smooth scroll with offset for fixed header
+  document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+    anchor.addEventListener('click', function (e) {
+      var targetId = this.getAttribute('href').slice(1);
+      var target = document.getElementById(targetId);
+      if (!target) return;
+      e.preventDefault();
+      var targetTop = target.getBoundingClientRect().top + window.pageYOffset - headerHeight + 8;
+      window.scrollTo({ top: targetTop, behavior: 'smooth' });
+      // focus target for accessibility
+      target.setAttribute('tabindex', '-1');
+      target.focus({ preventScroll: true });
+    });
+  });
+
+  // Simple contact form handling (client-side). Replace POST URL with your backend endpoint.
+  var form = document.getElementById('contact-form');
+  var statusEl = document.getElementById('form-status');
+
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      statusEl.textContent = '';
+      // honeypot check
+      if (form.website && form.website.value) {
+        statusEl.textContent = 'Bot detected.';
+        return;
+      }
+      // basic validation
+      var name = form.name.value.trim();
+      var email = form.email.value.trim();
+      var message = form.message.value.trim();
+      if (!name || !email || !message) {
+        statusEl.textContent = 'Please fill all required fields.';
+        return;
+      }
+      // Replace this with your real endpoint (e.g., fetch to your server or Formspree)
+      var endpoint = 'https://example.com/contact-endpoint'; // <-- change to your endpoint
+
+      // Show sending state
+      statusEl.textContent = 'Sending…';
+
+      fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: name, email: email, subject: form.subject.value, message: message })
+      })
+      .then(function (res) {
+        if (res.ok) {
+          statusEl.textContent = 'Message sent. We will contact you within 24 hours.';
+          form.reset();
+        } else {
+          return res.text().then(function (t) { throw new Error(t || 'Request failed'); });
+        }
+      })
+      .catch(function (err) {
+        console.error(err);
+        statusEl.textContent = 'Failed to send message. Please try again later or email sparktalentsolution@gmail.com';
+      });
+    });
+  }
+
+  // Close mobile nav when resizing up
+  var mq = window.matchMedia('(min-width:901px)');
+  mq.addListener(function (m) {
+    if (m.matches) {
+      primaryNav.classList.remove('open');
+      navToggle && navToggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+});
